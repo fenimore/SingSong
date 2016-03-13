@@ -10,14 +10,23 @@
 #include "scales.h"
 #include "melodies.h"
 
+volatile int val;
+
 SingSong::SingSong(int buz){
   pinMode(buz, OUTPUT);
   _buz = buz;
 }
 
 
+void SingSong::playThereminMap(int cm, int max){
+    // Change the mapping based on the range of
+    // of centimeters effected
+    val = map(cm, 0, max, 31, 4978); // 31 to 4978 I found in pitches.h
+    tone(_buz, val);
+}
+
 // returns duration of distance in microseconds
-void SingSong::playTheremin(int cm, int scale){
+void SingSong::playThereminScale(int cm, int scale){
   // tone(buzzer_pin, frequency, duration of note);
   // This is theremin mode
   // TODO: take input for scale

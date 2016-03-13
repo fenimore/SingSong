@@ -6,7 +6,8 @@
 class SingSong {
   public:
     SingSong(int buz);
-    void playTheremin(int cm, int scale);
+    void playThereminMap(int cm, int max);
+    void playThereminScale(int cm, int scale);
     void playScale(int scale);
     void playSong(int song);
   private:
